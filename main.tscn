@@ -1,0 +1,77 @@
+[gd_scene load_steps=7 format=3 uid="uid://bhiuf543n6vyi"]
+
+[ext_resource type="Texture2D" uid="uid://cxhcv1n5yrhpo" path="res://player.png" id="2_4prkj"]
+[ext_resource type="Script" path="res://Script/Player.gd" id="2_mrfma"]
+[ext_resource type="Texture2D" uid="uid://doib7lpeki1gf" path="res://Background.png" id="4_7fp0s"]
+[ext_resource type="Texture2D" uid="uid://d24fby07uomao" path="res://Icons.png" id="4_f2eid"]
+[ext_resource type="Script" path="res://InfoPanel.gd" id="5_awh4o"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rvjn6"]
+size = Vector2(16, 16)
+
+[node name="Main" type="Node2D"]
+
+[node name="Player" type="Area2D" parent="."]
+z_index = 100
+position = Vector2(24, 24)
+script = ExtResource("2_mrfma")
+
+[node name="PlayerSprite" type="Sprite2D" parent="Player"]
+texture_filter = 1
+texture = ExtResource("2_4prkj")
+
+[node name="PlayerCollider" type="CollisionShape2D" parent="Player"]
+shape = SubResource("RectangleShape2D_rvjn6")
+
+[node name="RayCast2D" type="RayCast2D" parent="Player"]
+target_position = Vector2(0, 48)
+collide_with_areas = true
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(2, 2)
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
+
+[node name="DirectionIndicator" type="Sprite2D" parent="Player"]
+visible = false
+texture_filter = 1
+texture = ExtResource("4_f2eid")
+offset = Vector2(0, 16)
+hframes = 4
+vframes = 3
+frame = 2
+
+[node name="TileLayer" type="CanvasLayer" parent="."]
+layer = -1
+follow_viewport_enabled = true
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.5, 0.5)
+motion_mirroring = Vector2(1152, 648)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+texture = ExtResource("4_7fp0s")
+centered = false
+
+[node name="HUDLayer" type="CanvasLayer" parent="."]
+
+[node name="InfoPanel" type="Panel" parent="HUDLayer"]
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 136.0
+grow_vertical = 2
+script = ExtResource("5_awh4o")
+
+[node name="InfoContainer" type="VBoxContainer" parent="HUDLayer/InfoPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TileStackSizeLabel" type="Label" parent="HUDLayer/InfoPanel/InfoContainer"]
+layout_mode = 2
+text = "Tiles left: 3"
