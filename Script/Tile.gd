@@ -84,6 +84,7 @@ func _create_tile_face() -> Sprite2D :
 	tile_face.centered = true
 	tile_face.name = "TileFace"
 	tile_face.texture = load("res://Tiles.png")
+	tile_face.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 	tile_face.hframes = 10
 	tile_face.vframes = 10
 	tile_face.frame_coords = tile_info.face_frame_coords

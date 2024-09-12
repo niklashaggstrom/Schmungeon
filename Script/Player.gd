@@ -18,6 +18,8 @@ var turn_step : Constants.TurnSteps
 var current_tile
 var target_tile
 
+var character = Character.new("Kurt Röfmügel", 20, 12)
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	tile_layer = get_tree().get_current_scene().get_node("TileLayer")
