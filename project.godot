@@ -17,8 +17,8 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-EventBus="*res://Script/Singletons/EventBus.gd"
 TileStack="*res://Script/Singletons/TileStack.gd"
+GameControl="*res://Script/Singletons/GameControl.gd"
 
 [editor]
 
@@ -101,5 +101,6 @@ clockwise={
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"

@@ -1,6 +1,7 @@
 class_name Constants
 
 const tile_size : int = 48
+const player_size : int = 16
 
 enum movement_rule_directions {
 	NONE = 0,
